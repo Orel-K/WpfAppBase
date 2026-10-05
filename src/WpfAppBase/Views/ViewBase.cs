@@ -20,4 +20,9 @@ public abstract partial class ViewBase<T> : UserControl where T : ViewModelBase
 
         this.DataContext = ViewModel = HostedApplication.Current.Services.GetRequiredService<T>();
     }
+
+    ~ViewBase()
+    {
+        ViewModel.Dispose();
+    }
 }
